@@ -160,10 +160,24 @@ Open each file in this order and read the comments carefully:
 ### Questions to answer before moving on
 
 1. What happens if you send a POST to `/products` with `price: -5`? Why?
+
+  ### Retorna un error 400 Bad Request porque el validador @IsPositive() rechaza números negativos o cero.
+
 2. What is the role of `ParseIntPipe` in `@Param('id', ParseIntPipe)`?
+
+  ### Convierte automáticamente el parámetro string :id a un número (number). Si falla la conversión, retorna 400.
+
 3. What would happen without `@IsNotEmpty()` on `name`?
+
+  ### Se aceptarían strings vacíos ("") como válidos, permitiendo crear productos sin nombre.
+
 4. Why does the service throw `NotFoundException` instead of returning `null`?
+
+  ### Porque es más semánticamente correcto. Una excepción automáticamente convierte a HTTP 404, informando al cliente que el recurso no existe.
+
 5. What is the difference between `@Get()` and `@Get(':id')`?
+
+  ### @Get() maneja GET a /products (todos los productos). @Get(':id') maneja GET a /products/123 (un producto específico con parámetro dinámico).
 
 ---
 

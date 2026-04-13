@@ -11,5 +11,7 @@ import { UsersService } from './users.service';
 
 @Module({
   // TODO: register the controller and the service
+  controllers: [UsersController],
+  providers: [UsersService],
 })
 export class UsersModule {}
